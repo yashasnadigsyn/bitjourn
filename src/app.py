@@ -3,6 +3,7 @@ import w3storage
 from dotenv import load_dotenv
 import os
 from datetime import datetime
+import json
 
 load_dotenv()
 
@@ -28,9 +29,9 @@ def api_submit():
     post_obj["content"] = request.form["content"]
     post_obj["timestamp"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
-    print(title, author, content)
+    post_cid = w3.post_upload(json.dumps(post_obj))
 
-    return "<p>submitted!</p>"
+    return f"your post is available is IPFS CID <code>{post_cid}</code>"
 
 
 if __name__ == "__main__":
