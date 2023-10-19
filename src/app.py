@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import w3storage
 from dotenv import load_dotenv
 import os
@@ -14,7 +14,18 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/update")
+@app.route("/api/submit", methods=["POST"])
+def submit():
+    title = request.form["title"]
+    author = request.form["author"]
+    content = request.form["content"]
+
+    print(title, author, content)
+
+    return "<p>submitted!</p>"
+
+
+@app.route("/api/update")
 def update():
     return "<p>updated!</p>"
 

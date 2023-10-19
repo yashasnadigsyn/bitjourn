@@ -3,16 +3,21 @@
 
 <head>
     <title>HTMX Flask Example</title>
-    <script src="../js/htmx-1.9.6.js"></script>
+    <srcipt src="../static/js/htmx-1.9.6.js"></srcipt>
 </head>
 
 <body>
-    <h1>HTMX Flask Example</h1>
-    <p>Click the button to see HTMX in action:</p>
-    <button hx-get="/update" hx-trigger="click" hx-target='#update-target'>Update Content</button>
-    <div id='update-target'>
-        Initial content will be replaced here.
-    </div>
+    <h1>BitJourn</h1>
+
+    <h2>create post</h2>
+    <form hx-post="/api/submit" hx-target="this" id="create-post-form">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title"><br>
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author"><br>
+        <textarea name="content" form="create-post-form" placeholder="content"></textarea>
+        <button type="submit">publish</button>
+    </form>
 </body>
 
 </html>
