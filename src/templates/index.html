@@ -3,19 +3,19 @@
 
 <head>
     <title>HTMX Flask Example</title>
-    <srcipt src="../static/js/htmx-1.9.6.js"></srcipt>
+    <script src="{{url_for('static', filename='js/htmx-1.9.6.js')}}"></script>
 </head>
 
 <body>
     <h1>BitJourn</h1>
 
     <h2>create post</h2>
-    <form hx-post="/api/submit" hx-target="this" id="create-post-form">
+    <form hx-post="/api/submit" hx-target="this">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title"><br>
         <label for="author">Author:</label>
         <input type="text" id="author" name="author"><br>
-        <textarea name="content" form="create-post-form" placeholder="content"></textarea>
+        <textarea name="content" placeholder="content"></textarea>
         <button type="submit">publish</button>
     </form>
 </body>
