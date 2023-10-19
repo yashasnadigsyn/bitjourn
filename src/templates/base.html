@@ -7,12 +7,8 @@
     <meta charset="utf-8">
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color:  	#2d2d30;
-        }
         .container {
-            max-width: 75%;
+            max-width: 800px;
             margin: 0 auto;
         }
         .header {
@@ -20,12 +16,6 @@
             color: black;
             height: 20px;       
             padding-left: 2px;     
-        }
-        .news {
-            margin-top: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            background: #f9f9f9;
         }
     </style>
 </head>
@@ -35,11 +25,12 @@
 <body>
     <div class="container">
         <div class="header">
-            <p>BitJourn - <a href="/post_news" style="color: black;">upload</a> | <a href="/post_ads" style="color: black;">ads</a> | <a href="/about" style="color: black;">about</a></p>
+            <p>BitJourn - <a href="/create" style="color: black;">upload</a> | <a href="/post_ads" style="color: black;">ads</a> | <a href="/about" style="color: black;">about</a></p>
         </div>
-        <div class="all_news">
-    
-        </div>
+
+        {% block body %}
+        {% endblock %}
+    </div>
 </body>
 
 </html>
