@@ -5,16 +5,41 @@
     <title>HTMX Flask Example</title>
     <script src="{{url_for('static', filename='js/htmx-1.9.6.js')}}"></script>
     <meta charset="utf-8">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:  	#2d2d30;
+        }
+        .container {
+            max-width: 75%;
+            margin: 0 auto;
+        }
+        .header {
+            background: #012485;
+            color: black;
+            height: 20px;       
+            padding-left: 2px;     
+        }
+        .news {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+        }
+    </style>
 </head>
 
 <html>
 
 <body>
-    <h1><a href="/">BitJourn</a></h1>
-    <p>the uncensorable news portal</p>
-
-    {% block body %}
-    {% endblock %}
+    <div class="container">
+        <div class="header">
+            <p>BitJourn - <a href="/post_news" style="color: black;">upload</a> | <a href="/post_ads" style="color: black;">ads</a> | <a href="/about" style="color: black;">about</a></p>
+        </div>
+        <div class="all_news">
+    
+        </div>
 </body>
 
 </html>
