@@ -16,9 +16,9 @@ def index():
 
 @app.route("/api/submit", methods=["POST"])
 def submit():
-    title = request.form["title"]
-    author = request.form["author"]
-    content = request.form["content"]
+    title = request.form.get("title")
+    author = request.form.get("author")
+    content = request.form.get("content")
 
     print(title, author, content)
 
