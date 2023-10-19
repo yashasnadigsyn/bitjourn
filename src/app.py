@@ -33,10 +33,5 @@ def api_submit():
     return "<p>submitted!</p>"
 
 
-@app.route("/api/update")
-def update():
-    return "<p>updated!</p>"
-
-
 if __name__ == "__main__":
     app.run(debug=True)
