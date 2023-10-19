@@ -4,6 +4,7 @@ import w3storage
 import markdown
 import shelve
 from os import listdir
+import requests
 
 
 class ContentHandler:
@@ -21,7 +22,10 @@ class ContentHandler:
         temp.close()
 
     def view_single_post(self, cid):
-        post_obj = self.w3.get(cid)
+        post_obj = requests.get(f"https://ipfs.io/ipfs/{cid}").json()
+        post_obj["content"] = markdown.markdown(post_obj["content"])
+
+        return post_obj
 
     def create_post(self, post_obj):
         post_cid = self.w3.post_upload(json.dumps(post_obj))
@@ -35,6 +39,8 @@ class ContentHandler:
         posts = self.homepage.items()
         print(list(posts))
         post_objs = [item[1] | {"cid": item[0]} for item in list(posts)]
+        for obj in post_objs:
+            obj["content"] = markdown.markdown(obj["content"])
 
         # sort post_objs using timestamp
         post_objs = sorted(post_objs, key=lambda k: k["timestamp"], reverse=True)

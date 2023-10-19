@@ -10,7 +10,6 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     posts = contentHandler.get_homepage()
-    print(posts)
     return render_template("home.html", posts=posts)
 
 
@@ -22,6 +21,12 @@ def about_page():
 @app.route("/create")
 def create_post():
     return render_template("create.html")
+
+
+@app.route("/post/<cid>")
+def view_post(cid):
+    post_obj = contentHandler.view_single_post(cid)
+    return render_template("singlepost.html", post=post_obj)
 
 
 @app.route("/tag/<tag>")
