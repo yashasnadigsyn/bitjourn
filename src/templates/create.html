@@ -5,8 +5,16 @@
 <form hx-post="/api/submit" hx-target="this">
     <label for="title">Title:</label>
     <input type="text" id="title" name="title"><br>
+
     <label for="author">Author:</label>
     <input type="text" id="author" name="author"><br>
+
+    <label for="tags">Tags (comma-separated):</label>
+    <input type="text" id="tags" name="tags"><br>
+
+    <label for="banner">Banner URL:</label>
+    <input type="url" id="banner" name="banner"><br>
+
     <textarea name="content" placeholder="content"></textarea>
     <button type="submit">publish</button>
 </form>

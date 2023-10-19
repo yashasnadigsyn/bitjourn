@@ -1,19 +1,20 @@
 from flask import Flask, render_template, request
-import w3storage
-from dotenv import load_dotenv
-import os
 from datetime import datetime
-import json
+from contenthandler import ContentHandler
+import os
 
-load_dotenv()
-
-w3 = w3storage.API(token=os.getenv("W3STORAGE_TOKEN"))
+contentHandler = ContentHandler(w3token=os.getenv("W3STORAGE_TOKEN"))
 app = Flask(__name__)
 
 
 @app.route("/")
 def home():
     return render_template("home.html")
+
+
+@app.route("/about")
+def about_page():
+    return render_template("about.html")
 
 
 @app.route("/create")
@@ -24,14 +25,21 @@ def create_post():
 @app.route("/api/submit", methods=["POST"])
 def api_submit():
     post_obj = {}
-    post_obj["title"] = request.form["title"]
-    post_obj["author"] = request.form["author"]
-    post_obj["content"] = request.form["content"]
+    post_obj["title"] = request.form["title"].strip()
+    post_obj["author"] = request.form["author"].strip()
+    post_obj["content"] = request.form["content"].strip()
     post_obj["timestamp"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
-    post_cid = w3.post_upload(json.dumps(post_obj))
+    # sanitize tags
+    tags = request.form["tags"].split(",")
+    tags = [tag.strip() for tag in tags if tag.strip() != ""]
+    post_obj["tags"] = tags
 
-    return f"your post is available is IPFS CID <code>{post_cid}</code>"
+    post_obj["banner_url"] = request.form["banner"].strip()
+
+    post_cid = contentHandler.create_post(post_obj)
+
+    return f"your post is available at IPFS CID <code>{post_cid}</code>"
 
 
 if __name__ == "__main__":
