@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTMX Flask Example</title>
+    <script src="{{url_for('static', filename='js/htmx-1.9.6.js')}}"></script>
+    <meta charset="utf-8">
+</head>
+
+<html>
+
+<body>
+    <h1>BitJourn</h1>
+    <p>the uncensorable news portal</p>
+
+    {% block body %}
+    {% endblock %}
+</body>
+
+</html>
