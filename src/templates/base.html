@@ -7,15 +7,24 @@
     <meta charset="utf-8">
 
     <style>
+        body {
+            font-family: monospace;
+        }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
         }
+
         .header {
-            background: #012485;
+            /* background: #012485; */
             color: black;
-            height: 20px;       
-            padding-left: 2px;     
+            height: 20px;
+            padding-left: 2px;
+        }
+
+        a {
+            color: black;
         }
     </style>
 </head>
@@ -25,7 +34,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <p>BitJourn - <a href="/create" style="color: black;">upload</a> | <a href="/post_ads" style="color: black;">ads</a> | <a href="/about" style="color: black;">about</a></p>
+            <h2><strong>BitJourn</strong> -
+                <a href="/create">upload</a> |
+                <a href="/about">about</a> |
+                <a href="/post_ads">post ads</a> |
+            </h2>
         </div>
 
         {% block body %}
