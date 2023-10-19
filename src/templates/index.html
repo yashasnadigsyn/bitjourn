@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTMX Flask Example</title>
+    <script src="../js/htmx-1.9.6.js"></script>
+</head>
+
+<body>
+    <h1>HTMX Flask Example</h1>
+    <p>Click the button to see HTMX in action:</p>
+    <button hx-get="/update" hx-trigger="click" hx-target='#update-target'>Update Content</button>
+    <div id='update-target'>
+        Initial content will be replaced here.
+    </div>
+</body>
+
+</html>
