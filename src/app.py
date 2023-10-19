@@ -9,7 +9,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    posts = contentHandler.get_homepage()
+    print(posts)
+    return render_template("home.html", posts=posts)
 
 
 @app.route("/about")
@@ -20,6 +22,11 @@ def about_page():
 @app.route("/create")
 def create_post():
     return render_template("create.html")
+
+
+@app.route("/tag/<tag>")
+def get_posts_by_tag(tag):
+    return f"<p>testing: {tag}</p><br><p>tags are not implemented yet :)</p>"
 
 
 @app.route("/api/submit", methods=["POST"])
