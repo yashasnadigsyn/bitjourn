@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
-from datetime import datetime
+from datetime import datetime, date
 from contenthandler import ContentHandler
-import os
+import os, json, uuid
 
 contentHandler = ContentHandler(w3token=os.getenv("W3STORAGE_TOKEN"))
 app = Flask(__name__)
@@ -11,6 +11,33 @@ app = Flask(__name__)
 def home():
     posts = contentHandler.get_homepage()
     return render_template("home.html", posts=posts)
+
+@app.route("/ads")
+def create_ads():
+    return render_template("ads.html")
+
+@app.route("/ads/basic")
+def show_basic_plan():
+    return render_template("pay.html")
+
+@app.route("/ads/custom")
+def show_custom_plan():
+    return render_template("custom.html")
+
+@app.route("/ads/data", methods=['POST'])
+def get_ads_content():
+    title = request.form['title']
+    image = request.files['image']
+    content = request.form['content']
+    image.save(os.path.join("static/ads/images", image.filename))
+    datajson = {}
+    datajson['title'] = title
+    datajson['content'] = content
+    datajson['image'] = os.path.join("static/ads/images", image.filename)
+    datajson['validTill'] = str(date(date.today().year + 1, date.today().month, date.today().day))
+    with open(f"static/ads/{str(uuid.uuid4())}.json", "w") as f:
+        json.dump(datajson, f)
+    return "cool"
 
 
 @app.route("/about")
