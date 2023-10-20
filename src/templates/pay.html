@@ -1,5 +1,5 @@
 <style>
-    /* body {
+  /* body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     text-align: center;
@@ -12,27 +12,27 @@
     height: 100vh;
 } */
 
-.payment-box {
+  .payment-box {
     background-color: #fff;
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     text-align: center;
-}
+  }
 
-h2 {
+  h2 {
     font-size: 24px;
     color: #333;
     margin: 10px 0;
-}
+  }
 
-.amount {
+  .amount {
     font-size: 16px;
     color: #666;
     margin: 10px 0;
-}
+  }
 
-button {
+  button {
     background-color: #007BFF;
     color: #fff;
     border: none;
@@ -40,43 +40,43 @@ button {
     border-radius: 5px;
     font-size: 18px;
     cursor: pointer;
-}
+  }
 
-button:hover {
+  button:hover {
     background-color: #0056b3;
-}
+  }
 
-.status {
+  .status {
     font-size: 18px;
     color: #28a745;
     margin: 20px 0;
-}
+  }
 
-form {
+  form {
     text-align: left;
-}
+  }
 
-.form-group {
+  .form-group {
     margin-bottom: 20px;
-}
+  }
 
-label {
+  label {
     font-size: 16px;
     color: #333;
     display: block;
-}
+  }
 
-input[type="text"],
-input[type="email"],
-textarea {
+  input[type="text"],
+  input[type="email"],
+  textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-}
+  }
 
-button.form-submit {
+  button.form-submit {
     background-color: #007BFF;
     color: #fff;
     border: none;
@@ -84,88 +84,88 @@ button.form-submit {
     border-radius: 5px;
     font-size: 18px;
     cursor: pointer;
-}
+  }
 
-button:hover {
+  button:hover {
     background-color: #0056b3;
-}
-
+  }
 </style>
-    <div class="payment-box">
-        <h2>BASIC Plan</h2>
-        <p class="amount">Amount: 0.1 ETH</p>
-        <form enctype="multipart/form-data" id="myForm">
-            <div class="form-group">
-                <label for="name">Title</label>
-                <input type="text" id="name" name="title" placeholder="Your ad title">
-            </div>
-            <div class="form-group">
-                <label for="email">Image</label>
-                <input type="file" id="email" name="image" placeholder="Your ad image">
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="content" placeholder="Your ad content" rows="5"></textarea>
-            </div>
-        </form>
-        <button id="pay-button" class="connect-metamask">Connect to Metamask wallet</button><br>
-        <div id="metamask-status"></div><br>
-        <button id="pay-button" class="pay-button">Pay with ethereum</button>
-        <div id="status" class="status"></div>
+
+<div class="payment-box">
+  <h2>BASIC Plan</h2>
+  <p class="amount">Amount: 0.1 ETH</p>
+  <form enctype="multipart/form-data" id="myForm">
+    <div class="form-group">
+      <label for="name">Title</label>
+      <input type="text" id="name" name="title" placeholder="Your ad title">
     </div>
-    <script type="text/javascript">
-      $('.connect-metamask').click(async () => {
-        if (window.ethereum) {
-          window.web3 = new Web3(ethereum);
-          try {
-            await ethereum.enable();
-            $('#metamask-status').html('Integrated Metamask, Please pay to continue')
-            initPayButton()
-          } catch (err) {
-            $('#status').html('User denied account access', err)
-          }
-        } else if (window.web3) {
-          window.web3 = new Web3(web3.currentProvider)
-          $('#metamask-status').html('Integrated Metamask, Please pay to continue')
-          initPayButton()
-        } else {
-          $('#status').html('No Metamask (or other Web3 Provider) installed')
-        }
-      });
-  
-      function initPayButton() {
-        $('.pay-button').click(() => {
-          const paymentAddress = '0x3EC4970390DEB42C4aEb4f40f26a02384A25A0a6'
-          const amountEth = 0.1
-  
-          web3.eth.sendTransaction({
-            to: paymentAddress,
-            value: web3.toWei(amountEth, 'ether')
-          }, (err, transactionId) => {
-            if  (err) {
-              console.log('Payment failed', err)
-              $('#status').html('Payment failed')
-            } else {
-              console.log('Payment successful', transactionId)
-              const url = '/ads/data'; 
-
-                var formData = new FormData($("#myForm")[0]);
-
-                $.ajax({
-                    url: url,
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (response) {
-                        console.log(response);
-                    },
-                    });
-
-              $('#status').html('Payment successful')
-
-            }
-          })
-        })
+    <div class="form-group">
+      <label for="email">Image</label>
+      <input type="file" id="email" name="image" placeholder="Your ad image">
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="content" placeholder="Your ad content" rows="5"></textarea>
+    </div>
+  </form>
+  <button id="pay-button" class="connect-metamask">Connect to Metamask wallet</button><br>
+  <div id="metamask-status"></div><br>
+  <button id="pay-button" class="pay-button">Pay with ethereum</button>
+  <div id="status" class="status"></div>
+</div>
+<script type="text/javascript">
+  $('.connect-metamask').click(async () => {
+    if (window.ethereum) {
+      window.web3 = new Web3(ethereum);
+      try {
+        await ethereum.enable();
+        $('#metamask-status').html('Integrated Metamask, Please pay to continue')
+        initPayButton()
+      } catch (err) {
+        $('#status').html('User denied account access', err)
       }
-    </script>
+    } else if (window.web3) {
+      window.web3 = new Web3(web3.currentProvider)
+      $('#metamask-status').html('Integrated Metamask, Please pay to continue')
+      initPayButton()
+    } else {
+      $('#status').html('No Metamask (or other Web3 Provider) installed')
+    }
+  });
+
+  function initPayButton() {
+    $('.pay-button').click(() => {
+      const paymentAddress = '0x3EC4970390DEB42C4aEb4f40f26a02384A25A0a6'
+      const amountEth = 0.1
+
+      web3.eth.sendTransaction({
+        to: paymentAddress,
+        value: web3.toWei(amountEth, 'ether')
+      }, (err, transactionId) => {
+        if (err) {
+          console.log('Payment failed', err)
+          $('#status').html('Payment failed')
+        } else {
+          console.log('Payment successful', transactionId)
+          const url = '/ads/data';
+
+          var formData = new FormData($("#myForm")[0]);
+
+          $.ajax({
+            url: url,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+              console.log(response);
+            },
+          });
+
+          $('#status').html('Payment successful')
+
+        }
+      })
+    })
+  }
+</script>

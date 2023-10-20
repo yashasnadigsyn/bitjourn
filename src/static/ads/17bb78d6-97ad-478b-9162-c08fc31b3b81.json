@@ -1,1 +1,6 @@
-{"title": "Buy cool wallpapers", "content": "We provide high quality wallpapers for a very low price", "image": "static/ads/images/wallpaper.png", "validTill": "2024-10-20"}
+{
+    "title": "Buy cool wallpapers",
+    "content": "We provide high quality wallpapers for a very low price",
+    "image": "static/ads/images/wallpaper.png",
+    "validTill": "2024-10-20"
+}
