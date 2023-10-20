@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>About Our Decentralized News Platform</title>
-    <style>
+{% extends "base.html" %}
+
+{% block body %}
+<style>
         /*have added basic css here, more can be added*/
         body {
             font-family: Arial, sans-serif;
@@ -16,32 +14,30 @@
             color: #666;
             line-height: 1.6;
         }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>About Our Decentralized News Platform</h1>
-    </header>
-    <section>
-        <h2>Empowering Free Speech and Press Freedom</h2>
-        <p>Welcome to our revolutionary decentralized news platform that is built on IPFS and Web 3 technologies. We are committed to enabling journalists and content creators to share news content in an uncensored and anonymous manner.</p>
-    </section>
-    <section>
-        <h2>Key Features:</h2>
-        <ul>
-            <li><h3>**Censorship Resistance:**</h3> Our platform is designed to be immune to governmental bans and censorship attempts, thanks to its heavily decentralized structure.</li>
-            <li><h3>**Anonymity:**</h3> We prioritize user privacy and provide a secure environment where journalists can publish content without revealing their identities.</li>
-            <li><h3>**IPFS Integration:**</h3>By using the InterPlanetary File System (IPFS), we ensure that content is distributed across a global network, making it resistant to takedowns and preserving data integrity.</li>
-            <li><h3>**Web 3 Technology:**</h3> We harness the power of Web 3 to create a user-centric and community-driven news ecosystem.</li>
-        </ul>
-    </section>
-    <section>
-        <h2>Our Mission</h2>
-        <p>Our mission is to support free speech, press freedom, and the principles of an open internet. We believe that information should be accessible to all and that the free flow of ideas is essential for a democratic society.</p>
-    </section>
-    <section>
-        <h2>Contact Us</h2>
-        <p>If you have questions, feedback, or want to get involved, feel free to reach out to us at - . We'd love to hear from you.</p>
-    </section>
-</body>
-</html>
+</style>
+<header>
+    <h1>About Our Decentralized News Platform</h1>
+</header>
+<section>
+    <h2>Empowering Free Speech and Press Freedom</h2>
+    <p>Welcome to our revolutionary decentralized news platform that is built on IPFS and Web 3 technologies. We are committed to enabling journalists and content creators to share news content in an uncensored and anonymous manner.</p>
+</section>
+<section>
+    <h2>Key Features:</h2>
+    <ul>
+        <li><h3>**Censorship Resistance:**</h3> Our platform is designed to be immune to governmental bans and censorship attempts, thanks to its heavily decentralized structure.</li><br>
+        <li><h3>**Anonymity:**</h3> We prioritize user privacy and provide a secure environment where journalists can publish content without revealing their identities.</li><br>
+        <li><h3>**IPFS Integration:**</h3>By using the InterPlanetary File System (IPFS), we ensure that content is distributed across a global network, making it resistant to takedowns and preserving data integrity.</li><br>
+        <li><h3>**Web 3 Technology:**</h3> We harness the power of Web 3 to create a user-centric and community-driven news ecosystem.</li><br>
+    </ul>
+</section>
+<section>
+    <h2>Our Mission</h2>
+    <p>Our mission is to support free speech, press freedom, and the principles of an open internet. We believe that information should be accessible to all and that the free flow of ideas is essential for a democratic society.</p>
+</section>
+<section>
+    <h2>Contact Us</h2>
+    <p>If you have questions, feedback, or want to get involved, feel free to reach out to us at - . We'd love to hear from you.</p>
+</section>
+
+{% endblock %}
