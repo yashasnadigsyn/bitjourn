@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <style>
+        .containir {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .pricing-plan {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            flex: 1;
+            max-width: 300px;
+            transition: transform 0.3s ease; /* Add transition for hover effect */
+        }
+        .pricing-plan:hover {
+            transform: scale(1.05); /* Add a hover effect to scale the plan */
+        }
+        .pricing-plan h2 {
+            color: #333;
+        }
+        .price {
+            font-size: 24px;
+            color: #012485;
+        }
+        .features {
+            text-align: left;
+            padding: 10px;
+        }
+        .feature {
+            margin: 5px 0;
+        }
+        .choose-plan-button {
+            background: #012485;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease; /* Add transition for hover effect */
+        }
+        .choose-plan-button:hover {
+            background: #012485; /* Darker color on hover */
+        }
+    </style>
+    <center><h1>Add ads to our site at low price</h1></center>
+    <center><h3>We have flexible plans for you: </h3></center>
+    <div class="containir">
+        <div class="pricing-plan" hx-get="/ads/basic" hx-swap="innerHTML" hx-target=".plan-view">
+            <h2>Basic</h2>
+            <div class="price">0.1 ETH</div>
+            <div class="features">
+                <div class="feature">One ad only</div>
+                <div class="feature">Post ads</div>
+                <div class="feature">1 year</div>
+                <div class="feature">Low randomness of ad</div>
+            </div>
+            <button class="choose-plan-button">Choose Plan</button>
+        </div>
+        <!-- <div class="pricing-plan" hx-get="/get_plan/standard">
+            <h2>Standard Plan</h2>
+            <div class="price">$19.99/year</div>
+            <div class="features">
+                <div class="feature">% different ads</div>
+                <div class="feature">Post ads</div>
+                <div class="feature">Call support</div>
+            </div>
+            <button class="choose-plan-button">Choose Plan</button>
+        </div> -->
+        <div class="pricing-plan" hx-get="/ads/custom" hx-swap="innerHTML" hx-target=".plan-view">
+            <h2>Custom</h2>
+            <div class="price">Custom plan</div>
+            <div class="features">
+                <div class="feature">n different ads</div>
+                <div class="feature">Post ads and banner ads</div>
+                <div class="feature">n number of years</div>
+                <div class="feature">High randomness of ad</div>
+            </div>
+            <button class="choose-plan-button">Contact us</button>
+        </div>
+    </div>
+
+    <div class="plan-view">
+
+    </div>
+
+{% endblock %}
