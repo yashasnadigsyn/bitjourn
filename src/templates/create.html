@@ -1,23 +1,43 @@
 {% extends "base.html" %}
 
 {% block body %}
-<h2>create post</h2>
-<form hx-post="/api/submit" hx-target="this" class="pure-form">
-    <fieldset>
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title"><br>
+<div class="back">
+    <div class="main">
+        <h2>CREATE POST</h2>
+    </div>
+    <form hx-post="/api/submit" hx-target="this" class="pure-form  pure-form-aligned center">
+        <fieldset>
+            <div class="pure-control-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title"><br>
+            </div>
 
-        <label for="author">Author:</label>
-        <input type="text" id="author" name="author"><br>
+            <div class="pure-control-group">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author"><br>
+            </div>
 
-        <label for="tags">Tags (comma-separated):</label>
-        <input type="text" id="tags" name="tags"><br>
+            <div class="pure-control-group">
+                <label for="tags">Tags (comma-separated):</label>
+                <input type="text" id="tags" name="tags"><br>
+            </div>
 
-        <label for="banner">Banner URL:</label>
-        <input type="url" id="banner" name="banner"><br>
+            <div class="pure-control-group">
+                <label for="banner">Banner URL:</label>
+                <input type="url" id="banner" name="banner"><br>
+            </div>
 
-        <textarea name="content" placeholder="content"></textarea>
-        <button type="submit" class="pure-button pure-button-primary">publish</button>
-    </fieldset>
-</form>
+            <div class="pure-control-group">
+                <label for="text">content:</label>
+                <textarea name="content" placeholder="content" id="text" rows="10" cols="30"></textarea>
+            </div>
+
+            <div class="pure-control-group">
+                <br>
+                <label></label>
+                <button type="submit" class="pure-button pure-button-primary btn">publish</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
 {% endblock %}
