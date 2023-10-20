@@ -90,15 +90,10 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* You can further customize the styles to match your desired look and feel. */
-
 </style>
     <div class="payment-box">
         <h2>BASIC Plan</h2>
         <p class="amount">Amount: 0.1 ETH</p>
-        <!-- <p>Title: <input type="text" name="ad-title" placeholder="Enter title of your ad here..."></p> -->
-        <!-- <p>Image: <input type="file" name="ad-image" placeholder="Add image of your ad here..."></p> -->
-        <!-- <p>Content: <textarea name="ad-content" cols="30" rows="10" placeholder="Enter content of your ad here..."></textarea></p> -->
         <form enctype="multipart/form-data" id="myForm">
             <div class="form-group">
                 <label for="name">Title</label>
@@ -140,7 +135,6 @@ button:hover {
   
       function initPayButton() {
         $('.pay-button').click(() => {
-          // paymentAddress is where funds will be send to
           const paymentAddress = '0x3EC4970390DEB42C4aEb4f40f26a02384A25A0a6'
           const amountEth = 0.1
   
@@ -153,18 +147,17 @@ button:hover {
               $('#status').html('Payment failed')
             } else {
               console.log('Payment successful', transactionId)
-              const url = '/ads/data'; // Replace with your API endpoint
+              const url = '/ads/data'; 
 
                 var formData = new FormData($("#myForm")[0]);
 
                 $.ajax({
                     url: url,
-                    type: 'POST',// Set the appropriate content type
+                    type: 'POST',
                     data: formData,
                     processData: false,
                     contentType: false,
                     success: function (response) {
-                        // Handle the response data here
                         console.log(response);
                     },
                     });
